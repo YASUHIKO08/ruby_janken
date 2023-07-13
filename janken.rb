@@ -7,6 +7,8 @@ class Janken_Game
   def janken_method(janken_result)
     #じゃんけんの手
     janken_hand = ["グー","チョキ","パー"]
+    #プレイヤーの手の数値を定義（じゃんけん）
+  　player_janken_hand = [0,1,2]    
     #相手の手をランダムに返す
     opponent_hand = rand(2)
     #あっち向いてホイの手
@@ -17,7 +19,7 @@ class Janken_Game
     #プレイヤーが入力した数値を反映
     player_hand = gets.to_i
   
-    if player_hand < 3
+    if player_hand >= 0 && player_hand < 3 
       puts "------------------------------------"
       puts "ホイ！"
       puts "あなたは#{janken_hand[player_hand]}を出しました"
@@ -27,6 +29,7 @@ class Janken_Game
       puts "さよなら〜"
       exit
     else
+      puts  "------------------------------------"
       puts "やり直し"
       exit
     end
@@ -63,7 +66,7 @@ class Janken_Game
       puts "ホイ！"
       puts "あなた:#{attimuite_hoi_hand[player_direction]}"
       puts "あいて:#{attimuite_hoi_hand[opponent_direction]}"
-    else 
+    else player_direction != 0 || player_direction != 1 || player_direction != 2 || player_direction != 3
       puts "------------------------------------"
       puts "やり直し"
       exit
